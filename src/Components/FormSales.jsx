@@ -66,7 +66,7 @@ const FormSales = (params) => {
       axios.patch(url,form, headers)
             .then( function () {
               showAlert('Venta actualizada', 'success');
-              window.location.href = '/sales'
+              window.location.href = '/Sales'
             }).catch(function (err) {
               showAlert('Venta no pudo ser editada', 'warning');
             })
@@ -74,7 +74,7 @@ const FormSales = (params) => {
             axios.post(url,form, headers)
             .then(function (){
               showAlert('Venta creada', 'success');
-              window.location.href = '/sales';
+              window.location.href = '/Sales';
               setClientName('');
               setClientPhone('');
               setPrice(0);
@@ -99,6 +99,7 @@ const FormSales = (params) => {
             <DivInput placeholder='Teléfono del cliente' type='text' icon='fa-building' value={clientPhone} className='form-control' required='required' ref={clientPhoneInput} handleChange={(e) => setClientPhone(e.target.value)}/>
             <DivInput placeholder='Precio de venta' type='text' icon='fa-building' value={price} className='form-control' required='required' ref={PriceInput} handleChange={(e) => setPrice(e.target.value)}/>
             <select className="form-select mb-2" value={product} ref={ProductInput}  onChange={(e) => setProduct(e.target.value)} aria-label="Default select example">
+              <option value='0'>Selecciona un producto</option>
               { products.map((row, i) => (
                 <option key={row.id} value={row.id}>{row.name} </option>
               ))};
