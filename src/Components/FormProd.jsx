@@ -25,7 +25,7 @@ const FormProd = (params) => {
 
   const getProduct = async () => {
     if(params.id !== null){
-      axios.get(url+'/'+params.id, headers)
+      axios.get(url+'/'+params.id, { headers: headers })
           .then( function(resp)  {
             setName(resp.data.name)
             setDescription(resp.data.description)
@@ -49,7 +49,7 @@ const FormProd = (params) => {
     console.log(form)
     if (params.id !== null) {
       url = '/products/'+params.id
-      axios.patch(url,form, headers)
+      axios.patch(url,form, { headers: headers })
             .then( function (resp) {
               showAlert('Producto actualizado', 'success')
               window.location.href = '/'
@@ -57,7 +57,7 @@ const FormProd = (params) => {
               showAlert('Producto no pudo ser editado', 'warning')
             })
           } else {
-            axios.post(url,form, headers)
+            axios.post(url,form, { headers: headers })
             .then(function (resp){
               showAlert('Producto creado', 'success')
               window.location.href = '/';

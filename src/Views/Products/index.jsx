@@ -21,7 +21,8 @@ const Products = () => {
   }, []);
 
   const getProducts = async() => {
-    axios.get('/products', headers )
+    console.log(headers)
+    axios.get('/products', { headers: headers } )
     .then( function ({data}){
       setProducts(data);
       setClassTable('');
@@ -38,7 +39,7 @@ const Products = () => {
       cancelButtonText:' Cancel'
     }).then((result) => {
       if(result.isConfirmed){
-        axios.delete('/products/'+ id, headers)
+        axios.delete('/products/'+ id, { headers: headers })
           .then( function (resp) {
             console.log(resp);
             showAlert('Producto eliminado', 'success');

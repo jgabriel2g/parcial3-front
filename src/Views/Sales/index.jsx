@@ -22,7 +22,7 @@ const Sales = () => {
   }, []);
 
   const  getSales = async () => {
-    axios.get('/sales', headers )
+    axios.get('/sales', { headers: headers } )
     .then( function ({data}){
       setSales(data);
       setClassTable('');
@@ -39,7 +39,7 @@ const Sales = () => {
       cancelButtonText:' Cancel'
     }).then((result) => {
       if(result.isConfirmed){
-        axios.delete('/sales/'+ id, headers)
+        axios.delete('/sales/'+ id, { headers: headers })
           .then( function (resp) {
             console.log(resp);
             showAlert('Venta eliminada', 'success');

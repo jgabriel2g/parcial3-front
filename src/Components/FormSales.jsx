@@ -30,7 +30,7 @@ const FormSales = (params) => {
 
   const getSale = async () => {
     if(params.id !== null){
-      axios.get(url+'/'+params.id, headers)
+      axios.get(url+'/'+params.id, { headers: headers })
           .then( function(resp)  {
             setClientName(resp.data.client_name)
             setClientPhone(resp.data.client_phone)
@@ -44,7 +44,7 @@ const FormSales = (params) => {
   };
 
   const getProducts = async() => {
-    axios.get('/products', headers )
+    axios.get('/products', { headers: headers } )
     .then( function ({data}){
       setProducts(data);
     });
@@ -63,7 +63,7 @@ const FormSales = (params) => {
     console.log(form)
     if (params.id !== null) {
       url = '/sales/'+params.id
-      axios.patch(url,form, headers)
+      axios.patch(url,form, { headers: headers })
             .then( function () {
               showAlert('Venta actualizada', 'success');
               window.location.href = '/Sales'
@@ -71,7 +71,7 @@ const FormSales = (params) => {
               showAlert('Venta no pudo ser editada', 'warning');
             })
           } else {
-            axios.post(url,form, headers)
+            axios.post(url,form, { headers: headers })
             .then(function (){
               showAlert('Venta creada', 'success');
               window.location.href = '/Sales';
